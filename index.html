@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center; color: white;">TODO LIST</h1>
+        <div class="todo-app">
+
+            <h2>To-Do List <img src="images/todo.png" alt="To-Do List" class="todo-img"></h2>
+
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your task">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        function addTask() {
+            const inputBox = document.getElementById('input-box');
+            const taskList = document.getElementById('task-list');
+            const taskText = inputBox.value;
+
+            if (taskText.trim()) {
+                const li = document.createElement('li');
+                li.innerText = taskText;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.innerText = "Remove";
+                removeBtn.style.marginLeft = '30px';
+                removeBtn.style.backgroundColor = 'red';
+                removeBtn.style.color = "white";
+                removeBtn.style.border = "none";
+                removeBtn.style.borderRadius = "40px";
+                removeBtn.style.cursor = "pointer";
+
+                removeBtn.addEventListener('click', function () {
+                    taskList.removeChild(li);
+                });
+
+                li.appendChild(removeBtn);
+                taskList.appendChild(li);
+
+                inputBox.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
